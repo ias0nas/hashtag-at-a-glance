@@ -16,7 +16,7 @@
 
     <EditText
         android:id="@+id/etHashtag"
-        android:text="@string/editText_search_hashtag"
+        android:hint="@string/editText_search_hashtag"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -26,11 +26,12 @@
         app:layout_constraintRight_toLeftOf="@id/guidelineSearch"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btAddHashtag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/button_add_hashtag"
         app:layout_constraintStart_toEndOf="@id/guidelineSearch"
-        app:layout_constraintBottom_toBottomOf="@id/etHashtag"/>
+        app:layout_constraintBottom_toBottomOf="@id/etHashtag"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 
 </android.support.constraint.ConstraintLayout>
