@@ -1,9 +1,10 @@
-package com.hashtagataglance.hashatagataglance
+package com.hashtagataglance.hashatagataglance.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.hashtagataglance.hashatagataglance.AppConfig.HashtagType.Companion.RECENT
 import com.hashtagataglance.hashatagataglance.AppConfig.SharedPreferencesFileName.Companion.RECENT_HASHTAGS
+import com.hashtagataglance.hashatagataglance.R
 import kotlinx.android.synthetic.main.activity_hashtag.*
 
 class Hashtag : AppCompatActivity() {
@@ -21,6 +22,6 @@ class Hashtag : AppCompatActivity() {
     fun addRecentHashtag(hashtag: String) {
         val sharedPreferences = this.getSharedPreferences(RECENT_HASHTAGS,
                 android.content.Context.MODE_PRIVATE)
-        sharedPreferences.edit().putInt(hashtag, RECENT)
+        sharedPreferences.edit().putInt(hashtag, RECENT).apply()
     }
 }

@@ -1,12 +1,20 @@
-package com.hashtagataglance.hashatagataglance
+package com.hashtagataglance.hashatagataglance.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ListAdapter
+import com.hashtagataglance.hashatagataglance.R
+import com.hashtagataglance.hashatagataglance.data.HashtagAdapter
+import com.hashtagataglance.hashatagataglance.data.HashtagData
 
 import kotlinx.android.synthetic.main.activity_hashtags_list.*
+import kotlinx.android.synthetic.main.content_hashtags_list.*
+
+
 
 class HashtagsList : AppCompatActivity() {
 
@@ -15,9 +23,17 @@ class HashtagsList : AppCompatActivity() {
         setContentView(R.layout.activity_hashtags_list)
         setSupportActionBar(toolbar)
 
+        rc_hashtags.hasFixedSize()
+        rc_hashtags.layoutManager = LinearLayoutManager(this)
+        rc_hashtags.adapter = HashtagAdapter(HashtagData().recentHashtags(this))
+
         fabNewHashtag.setOnClickListener { _ ->
             val intent = Intent(this, Hashtag::class.java)
             startActivity(intent)
+        }
+
+        fabList.setOnClickListener { _ ->
+
         }
     }
 
