@@ -20,8 +20,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.Hashtag"
-            android:label=""
+            android:name=".ui.NewHashtag"
+            android:label="@string/activity_title_new_hashtag"
             android:parentActivityName=".ui.HashtagsList">
         </activity>
     </application>

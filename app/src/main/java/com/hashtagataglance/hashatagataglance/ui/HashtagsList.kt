@@ -6,15 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ListAdapter
+import android.view.View
 import com.hashtagataglance.hashatagataglance.R
 import com.hashtagataglance.hashatagataglance.data.HashtagAdapter
 import com.hashtagataglance.hashatagataglance.data.HashtagData
 
 import kotlinx.android.synthetic.main.activity_hashtags_list.*
-import kotlinx.android.synthetic.main.content_hashtags_list.*
-
-
 
 class HashtagsList : AppCompatActivity() {
 
@@ -23,17 +20,18 @@ class HashtagsList : AppCompatActivity() {
         setContentView(R.layout.activity_hashtags_list)
         setSupportActionBar(toolbar)
 
+        val recentHashtags = HashtagData().recentHashtags(this)
         rc_hashtags.hasFixedSize()
         rc_hashtags.layoutManager = LinearLayoutManager(this)
-        rc_hashtags.adapter = HashtagAdapter(HashtagData().recentHashtags(this))
+        rc_hashtags.adapter = HashtagAdapter(recentHashtags)
 
-        fabNewHashtag.setOnClickListener { _ ->
-            val intent = Intent(this, Hashtag::class.java)
-            startActivity(intent)
+        if (recentHashtags.count() > 1) {
+            tv_noRecentHashtags.visibility = View.GONE
         }
 
-        fabList.setOnClickListener { _ ->
-
+        fabNewHashtag.setOnClickListener { _ ->
+            val intent = Intent(this, NewHashtag::class.java)
+            startActivity(intent)
         }
     }
 
@@ -48,7 +46,7 @@ class HashtagsList : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_social_media_accounts -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
